@@ -62,13 +62,14 @@ class ARXIVParser:
     def __make_md(self):
         os.makedirs("result_docs", exist_ok=True)
         for i in self.article_list:
-            random_hex_string = secrets.token_hex(5)
+            # random_hex_string = secrets.token_hex(5)
             text_article = i["text_article"]
             title = i["title"]
             title = re.sub(r"[\s:]+", "_", title) # Чистим статьи от нежелательного " : "
-            file_name = f"{title}~{random_hex_string}.md"
+            # file_name = f"{title}~{random_hex_string}.md"
+            file_name = f"{title}.md"
             i["file_name"] = file_name
-            with open(os.path.join("result_docs", file_name), mode='w', encoding='utf-8', newline="\n") as file:
+            with open(os.path.join("result_docs", file_name), mode='w', encoding='utf-8') as file:
                 file.write(text_article)
 
     def __make_json(self):
